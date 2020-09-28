@@ -1,7 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import img from './../Img/quiz.jpg';
+import gkQuiz from './../Img/quiz.jpg';
+import historyQuiz from './../Img/history.jpg';
+import scienceQuiz from './../Img/science.jpg';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -46,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const QuizHome=({DifficultyCallBack, CategoryCallBack, quizCallback}:any)=> {
+export const QuizHome=({DifficultyCallBack, CategoryCallBack}:any)=> {
   const classes = useStyles();
   const navigate=useNavigate();
 
@@ -69,7 +71,7 @@ export const QuizHome=({DifficultyCallBack, CategoryCallBack, quizCallback}:any)
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={img}
+                    image={gkQuiz}
                     title="General Knowledge"
                   />
                   <CardContent>
@@ -90,7 +92,7 @@ export const QuizHome=({DifficultyCallBack, CategoryCallBack, quizCallback}:any)
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={img}
+                    image={scienceQuiz}
                     title="Science &amp; Nature"
                   />
                   <CardContent>
@@ -111,7 +113,7 @@ export const QuizHome=({DifficultyCallBack, CategoryCallBack, quizCallback}:any)
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image={img}
+                    image={historyQuiz}
                     title="History"
                   />
                   <CardContent>
@@ -138,7 +140,7 @@ export const QuizHome=({DifficultyCallBack, CategoryCallBack, quizCallback}:any)
         </Grid>
         <Grid container>
             <Grid item xs={6} sm={3} className={classes.marignAuto}>
-                <Button variant="contained" color="primary" onClick={()=>{navigate("/quiz"); quizCallback()}}>Start Quiz</Button>
+                <Button variant="contained" color="primary" onClick={()=>{navigate("/quiz")}}>Start Quiz</Button>
             </Grid>
         </Grid>
       </div>

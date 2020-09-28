@@ -3,6 +3,7 @@ import {QuestionType, QuizType} from './../Types/quiz_type'
 const shuffleArray=(array: any[])=>[...array].sort(()=>Math.random() - 0.5)
 async function getData(amount:number , category:number , difficulty:string):Promise<QuizType[]>{
     const {results}=await (await fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)).json()
+    console.log(results)
     const response:QuizType[]=results.map((dataObj:QuestionType)=>{
         return {
             question:dataObj.question,

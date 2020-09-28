@@ -7,19 +7,18 @@ import getData from './Services/quiz_data';
 
 function App() {
   const [quiz , setQuiz]=useState<any>()
-  const [loading, setLoading]=useState(true)
   let [difficulty, setDifficulty]=useState("easy")
   let [category, setCategory]=useState<number>(9)
-  let [startquiz, setStartQuiz]=useState(false)
+  // let [startquiz, setStartQuiz]=useState(false)
 
   useEffect(()=>{
     async function quizData(total_question:number,category:number,difficulty:string){
       const data=await getData(total_question,category,difficulty)
       setQuiz(data) 
-      setLoading(false)
+      console.log(data)
     }
     quizData(10, category ,difficulty)
-  },[startquiz])
+  },[category,difficulty])
 
 
   function handleDifficulty(e:React.FormEvent<EventTarget>,diff:string){
@@ -29,20 +28,12 @@ function App() {
   function handleCategory(num:number){
     setCategory(num)
   }
-  function handleQuiz(){
-    setStartQuiz(!startquiz)
-    setLoading(true)
-    // setQuiz(true);
-  }
 
-  if (loading===true){
-    return <div>Loading...</div>
-  }
   return (
     <div>    
       <BrowserRouter>
         <Routes>
-          <Route  path="/" element={<QuizHome DifficultyCallBack={handleDifficulty} CategoryCallBack={handleCategory} quizCallback={handleQuiz}></QuizHome>}></Route>
+          <Route  path="/" element={<QuizHome DifficultyCallBack={handleDifficulty} CategoryCallBack={handleCategory}></QuizHome>}></Route>
           <Route  path="/quiz" element={<QuizPage quiz={quiz}   ></QuizPage>}></Route>
         </Routes>
       </BrowserRouter>
